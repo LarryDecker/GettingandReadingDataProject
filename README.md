@@ -20,9 +20,9 @@ The files below are used in the following way in the script. Note that they are 
 
 The following steps will allow you to obtain the data and run the R script to create the tidy data set:
 * Download the zipped file containing the data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-* Unzip the file and note the location of the "UCI HAR Dataset" folder. If desired copy or move this folder and its contents to a different location.
+* Unzip the file and note the location of the "UCI HAR Dataset" folder. Either this folder needs to be your working directory or its contents needs to be copied to your desired working directory. This includes the files activity_labels.txt, features.txt, and the  train and test folders with their contents subject_train.txt, X_train.txt, Y_train, subject_test.txt, X_test.txt, and Y_test.txt. Note that the script assumes train and test are subfolders of the working directory.
 * Open the run_analysis.R script.
-* In line 2 of the script, change the path in the setwd() command to reflect the location of the "UCI HAR Dataset" folder.
+* If necessary, uncomment line 2 of the script, change the path in the setwd() command to reflect the location of the "UCI HAR Dataset" folder or your desired working directory that has the contents indicated above. 
 * Run the script. Note that you will need to have the dplyr package installed.
 
 
@@ -36,9 +36,9 @@ The logical order of the script is as follows:
 * Give the columns of X_total, Y_total, and subject_total descriptive names.
 * Combine X_total, Y_total, and subject_total into the full data set, fullset, as a tibble.
 * Summarize fullset by Subject and Activity to create the tidy data set "tidyset".
-* Clean up the names of tidyset columns 
-* Inspect the names and the tidyset data set.
-* Write tidyset as a table out to a file called "tidyset.txt"
+* Clean up the names of tidyset columns.
+* Inspect the names of the tidyset columns.
+* Write tidyset as a table out to a file called "tidyset.txt".
 * Read the table back in to the data set tidysetread and check that it matches tidyset.
 
 ## Discussion of why the result meets the criteria for a tidy data set
