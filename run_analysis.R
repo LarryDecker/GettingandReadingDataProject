@@ -1,5 +1,5 @@
 #Set the working directory to where the UCI HAR Dataset folder is
-setwd("c:/coursera/readingdata/Course Project/UCI HAR Dataset/")
+#setwd("c:/coursera/readingdata/Course Project/UCI HAR Dataset/")
 
 #load the dplyr package
 library("dplyr")
@@ -76,8 +76,6 @@ names(tidyset)<-gsub("-","_",names(tidyset))
 
 #inspect the names to make sure they are what is desired
 names(tidyset)
-#take a look at the tidy data set to verify it looks ok
-View(tidyset)
 
 #write the table out
 write.table(tidyset,file="tidyset.txt",row.names = FALSE)
