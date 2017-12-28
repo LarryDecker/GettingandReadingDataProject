@@ -23,8 +23,6 @@ Y_total<-rbind(Y_train,Y_test)
 #Combine subject_train and subject_test into subject_total
 subject_total<-rbind(subject_train,subject_test)
 
-#Merge Y_total with the activity labels and only keep the 2nd column with the labels.
-Y_total<-as.data.frame(merge(Y_total,activity_labels,by="V1")[,2])
 
 #replace the cryptic V? feature names with the ones in the features data frame.
 names(X_total)<-features$V2[grep("mean\\(\\)|std\\(\\)",features$V2)]
@@ -35,6 +33,13 @@ names(subject_total)<-"Subject"
 
 #combine the sets together into a tibble
 fullset<-as_tibble(cbind(subject_total,Y_total,X_total))
+
+#Merge fullset with the activity labels 
+fullset<-as.data.frame(merge(fullset,activity_labels,by.x="Activity",by.y="V1"))
+fullset<-fullset[,c(2,69,3:68)]
+
+#Give descriptive names to activity column
+names(fullset)[2]="Activity"
 
 #create the tidyset for the project by obtaining the mean of the numeric variables by Subject and Activity
 tidyset<-summarise_at(group_by(fullset,Subject,Activity),names(fullset)[3:68],mean)
