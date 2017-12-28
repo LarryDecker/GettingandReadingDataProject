@@ -32,9 +32,10 @@ The logical order of the script is as follows:
 * Set the working directory and load the dplyr package.
 * Read in the necessary files, giving them same name as their file name.
 * Combine X_train, Xtest, Y_train, Y_test, subject_train, and subject_test into X_total, Y_total, and subject_total.
-* Change Y_total data from integers to descriptive labels.
 * Give the columns of X_total, Y_total, and subject_total descriptive names.
 * Combine X_total, Y_total, and subject_total into the full data set, fullset, as a tibble.
+* Merge fullset with the activity names so that labels are used instead of integers.
+* Give the new activity column a descriptive name "Activity".
 * Summarize fullset by Subject and Activity to create the tidy data set "tidyset".
 * Clean up the names of tidyset columns.
 * Inspect the names of the tidyset columns.
